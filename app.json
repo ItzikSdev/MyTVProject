@@ -4,15 +4,15 @@
       [
         "@react-native-tvos/config-tv",
         {
-          "androidTVBanner": "./assets/tv_icons/icon-400x240.png",
+          "androidTVBanner": "./assets/tv_icons/icon-400x240.jpg",
           "appleTVImages": {
-            "icon": "./assets/tv_icons/icon-1280x768.png",
-            "iconSmall": "./assets/tv_icons/icon-400x240.png",
-            "iconSmall2x": "./assets/tv_icons/icon-800x480.png",
-            "topShelf": "./assets/tv_icons/icon-1920x720.png",
-            "topShelf2x": "./assets/tv_icons/icon-3840x1440.png",
-            "topShelfWide": "./assets/tv_icons/icon-2320x720.png",
-            "topShelfWide2x": "./assets/tv_icons/icon-4640x1440.png"
+            "icon": "./assets/tv_icons/icon-1280x768.jpg",
+            "iconSmall": "./assets/tv_icons/icon-400x240.jpg",
+            "iconSmall2x": "./assets/tv_icons/icon-800x480.jpg",
+            "topShelf": "./assets/tv_icons/icon-1920x720.jpg",
+            "topShelf2x": "./assets/tv_icons/icon-3840x1440.jpg",
+            "topShelfWide": "./assets/tv_icons/icon-2320x720.jpg",
+            "topShelfWide2x": "./assets/tv_icons/icon-4640x1440.jpg"
           }
         }
       ],
@@ -27,12 +27,16 @@
           }
         }
       ],
-      "expo-router"
+      "expo-router",
+      "expo-video"
     ],
     "experiments": {
       "typedRoutes": true
     },
-    "name": "MyTVProject",
-    "slug": "MyTVProject"
+    "name": "rtv-project",
+    "slug": "rtv-project",
+    "android": {
+      "package": "com.itziksavaia.MyTVProject"
+    }
   }
 }
