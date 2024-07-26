@@ -11,19 +11,18 @@ interface MyButtonProps {
 const MyButton: FC<MyButtonProps> = ({movie}) => {
   const [count, setCount] = useState<number>(0);
   const navigation = useNavigation();
+  console.log("MyButton");
   
 
   const onPress = () => {
     setCount((prevCount) => prevCount + 1);
-    navigation.navigate('DisplayMovie' as keyof ParamList, { movie });
+    navigation.navigate('DisplayMovie', { movie });
   };
 
   return (
     <View style={styles.container}>
     <TouchableOpacity style={styles.button} onPress={onPress}>
-      <ImageBackground source={{ uri: movie.displayMovies.image }} resizeMode="cover" style={styles.image}>
-        <Text style={styles.text}>{movie.name}</Text>
-      </ImageBackground>
+      <ImageBackground source={{ uri: movie.displayMovies.image }} resizeMode="cover" style={styles.image}/> 
     </TouchableOpacity>
   </View>
   );
@@ -43,12 +42,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 1,
   },
-
   image: {
     width: 200,
     height: 250,
     justifyContent: "flex-end",
-    objectFit: "scale-down"
+    objectFit: "scale-down",
   },
   text: {
     color: 'white',

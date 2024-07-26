@@ -5,7 +5,6 @@ import { RouteProp } from "@react-navigation/native";
 import { useNavigation } from "@react-navigation/native";
 import React, { FC, useState } from "react";
 import {
-  Button,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -14,6 +13,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { Button } from 'react-native-paper';
 
 
 export type ParamList = {
@@ -25,7 +25,7 @@ interface DisplayMovieProps {
 }
 
 
-const DisplayMovie: FC<DisplayMovieProps> = ({ route }) => {
+const DisplayMovie = ({ route }: DisplayMovieProps) => {
   const { movie } = route.params;
   const navigation = useNavigation();
 
@@ -38,7 +38,7 @@ const DisplayMovie: FC<DisplayMovieProps> = ({ route }) => {
     <View style={styles.container}>
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.scrollView}>
-        <Button title="Return" onPress={() => navigation.goBack()} />
+        <Button icon="arrow-left" mode="contained" style={{width: 200, padding: 10,  borderRadius: 10}} onPress={() => navigation.goBack()}>Return</Button>
         <RenderMovie movie={movie} onPress={onPressPlay} />
         </ScrollView>
       </SafeAreaView>

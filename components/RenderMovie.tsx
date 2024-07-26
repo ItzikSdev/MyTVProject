@@ -4,6 +4,7 @@ import { useScale } from "@/hooks/useScale";
 import { Movie } from "@/types/movie";
 import { Colors } from "@/constants/Colors";
 import Style from "@/styles/Style";
+import FullScreenMovie from "@/app/FullScreenMovie";
 
 interface RenderMovieProps {
   movie: Movie;
@@ -14,8 +15,11 @@ export type ParamList = {
   Movie: { movie: Movie };
 };
 
-
-const RenderMovie: React.FC<RenderMovieProps> = ({ movie, hasTVPreferredFocus, onPress }) => {
+const RenderMovie: React.FC<RenderMovieProps> = ({
+  movie,
+  hasTVPreferredFocus,
+  onPress,
+}) => {
   const styles = galleryItemComponentStyles();
   const [focus, setFocus] = useState(false);
 
@@ -26,22 +30,22 @@ const RenderMovie: React.FC<RenderMovieProps> = ({ movie, hasTVPreferredFocus, o
   const handlePress = useCallback(() => onPress(movie), [movie, onPress]);
 
   return (
-    <TouchableHighlight
-      onFocus={onFocus}
-      onBlur={onBlur}
-      onPress={handlePress}
-      hasTVPreferredFocus={hasTVPreferredFocus}
-      style={[styles.wrapper, focus ? styles.wrapperFocused : null]}
-    >
-      <View style={styles.view}>
-        <View>
-          <Text style={styles.hadderText}>{movie.name}</Text>
+    <View>
+      <Text style={styles.hadderText}>{movie.name}</Text>
+      <TouchableHighlight
+        onFocus={onFocus}
+        onBlur={onBlur}
+        onPress={handlePress}
+        hasTVPreferredFocus={hasTVPreferredFocus}
+        style={[styles.wrapper, focus ? styles.wrapperFocused : null]}
+      >
+        <View style={styles.view}>
+          <View style={{ height: "100%" }}>
+            <FullScreenMovie movie={movie} />
+          </View>
         </View>
-        <View>
-          <Text style={styles.text}>{movie.details.summary}</Text>
-        </View>
-      </View>
-    </TouchableHighlight>
+      </TouchableHighlight>
+    </View>
   );
 };
 
@@ -49,10 +53,9 @@ const galleryItemComponentStyles = function () {
   const scale = useScale();
   return StyleSheet.create({
     view: {
-      backgroundColor: Style.modalBackgroundColor,
+      backgroundColor: Colors.dark.background,
     },
     wrapper: {
-      padding: 2,
       backgroundColor: Colors.dark.background,
     },
     wrapperFocused: {
@@ -61,7 +64,7 @@ const galleryItemComponentStyles = function () {
     hadderText: {
       fontSize: 24,
       color: "white",
-      textAlign: "center",
+      padding: 10,
     },
     text: {
       fontSize: 12,
